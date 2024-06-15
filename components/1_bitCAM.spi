@@ -1,0 +1,36 @@
+*** SPICE deck for cell 1_bitCAM{sch} from library Project
+*** Created on Sun Jul 02, 2023 00:03:27
+*** Last revised on Sun Jul 02, 2023 11:08:47
+*** Written on Sun Jul 02, 2023 11:08:49 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Project__SRAM FROM CELL Project:SRAM{sch}
+.SUBCKT Project__SRAM BL BLB Q QB RD vdd WL
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Q WL BL gnd nmos L=0.044U W=0.264U
+Mnmos@1 BLB WL QB gnd nmos L=0.044U W=0.264U
+Mnmos@2 net@28 Q BL gnd nmos L=0.044U W=0.132U
+Mnmos@3 BLB QB net@28 gnd nmos L=0.044U W=0.132U
+Mnmos@4 net@28 RD gnd gnd nmos L=0.044U W=0.198U
+Mnmos@5 gnd QB Q gnd nmos L=0.044U W=0.066U
+Mnmos@6 QB Q gnd gnd nmos L=0.044U W=0.066U
+Mpmos@0 Q QB vdd vdd pmos L=0.044U W=0.066U
+Mpmos@1 vdd Q QB vdd pmos L=0.044U W=0.066U
+
+* Spice Code nodes in cell cell 'Project:SRAM{sch}'
+vdd vdd 0 DC 0.95
+VWL WL 0 pulse 0.95 0 0 1n 1n 10n 50n
+VRD RD 0.95 pwl 0.95 0.01u
+VBL BL 0 pulse 0.95 0 0 1n 1n 5n 25n
+VBLB BLB 0 pulse 0 0.95 0 1n 1n 5n 25n
+.tran 0 0.1us
+.include C:\Program Files\LTC\LTspiceXVII\model\model.txt
+.ENDS Project__SRAM
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Project:1_bitCAM{sch}
+XSRAM@1 BL BLB Q QB RD vdd WL Project__SRAM
+.END

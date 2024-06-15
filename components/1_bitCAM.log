@@ -1,0 +1,24 @@
+Circuit: *** SPICE deck for cell 1_bitCAM{sch} from library Project
+
+WARNING: Node SRAM@1:0.95 is floating.
+
+WARNING: Less than two connections to node SRAM@1:0.95.  This node is used by V:SRAM@1:RD.
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun Jul 02 11:08:50 2023
+Total elapsed time: 0.141 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2846
+traniter = 2827
+tranpoints = 1124
+accept = 1103
+rejected = 21
+matrix size = 50
+fillins = 7
+solver = Normal
+Matrix Compiler1: 5.70 KB object code size  1.5/0.8/[0.6]
+Matrix Compiler2: 5.69 KB object code size  0.7/0.8/[0.5]
+

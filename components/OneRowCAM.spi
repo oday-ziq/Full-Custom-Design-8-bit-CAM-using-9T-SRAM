@@ -1,0 +1,111 @@
+*** SPICE deck for cell OneRowCAM{sch} from library Project-1-1
+*** Created on Sun Jul 02, 2023 14:37:23
+*** Last revised on Sun Jul 02, 2023 16:12:18
+*** Written on Sun Jul 02, 2023 16:12:39 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT Project-1-1__8_bit_NAND FROM CELL Project-1-1:8_bit_NAND{sch}
+.SUBCKT Project-1-1__8_bit_NAND I1 I2 I3 I4 I5 I6 I7 I8 Y
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Y I1 net@0 gnd nmos L=0.044U W=0.044U
+Mnmos@8 net@0 I2 net@1 gnd nmos L=0.044U W=0.044U
+Mnmos@9 net@1 I3 net@2 gnd nmos L=0.044U W=0.044U
+Mnmos@10 net@2 I4 net@3 gnd nmos L=0.044U W=0.044U
+Mnmos@11 net@3 I5 net@4 gnd nmos L=0.044U W=0.044U
+Mnmos@12 net@4 I6 net@5 gnd nmos L=0.044U W=0.044U
+Mnmos@13 net@5 I7 net@6 gnd nmos L=0.044U W=0.044U
+Mnmos@14 net@6 I8 gnd gnd nmos L=0.044U W=0.044U
+Mpmos@0 vdd I1 Y vdd pmos L=0.044U W=0.044U
+Mpmos@4 vdd I2 Y vdd pmos L=0.044U W=0.044U
+Mpmos@5 vdd I3 Y vdd pmos L=0.044U W=0.044U
+Mpmos@6 vdd I4 Y vdd pmos L=0.044U W=0.044U
+Mpmos@7 vdd I5 Y vdd pmos L=0.044U W=0.044U
+Mpmos@8 vdd I6 Y vdd pmos L=0.044U W=0.044U
+Mpmos@9 vdd I7 Y vdd pmos L=0.044U W=0.044U
+Mpmos@10 pmos@10_d I8 Y vdd pmos L=0.044U W=0.044U
+.ENDS Project-1-1__8_bit_NAND
+
+*** SUBCIRCUIT Project-1-1__SRAM FROM CELL Project-1-1:SRAM{sch}
+.SUBCKT Project-1-1__SRAM BL BLB Q QB RD vdd WL
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Q WL BL gnd nmos L=0.044U W=0.264U
+Mnmos@1 BLB WL QB gnd nmos L=0.044U W=0.264U
+Mnmos@2 net@28 Q BL gnd nmos L=0.044U W=0.132U
+Mnmos@3 BLB QB net@28 gnd nmos L=0.044U W=0.132U
+Mnmos@4 net@28 RD gnd gnd nmos L=0.044U W=0.198U
+Mnmos@5 gnd QB Q gnd nmos L=0.044U W=0.066U
+Mnmos@6 QB Q gnd gnd nmos L=0.044U W=0.066U
+Mpmos@0 Q QB vdd vdd pmos L=0.044U W=0.066U
+Mpmos@1 vdd Q QB vdd pmos L=0.044U W=0.066U
+.ENDS Project-1-1__SRAM
+
+*** SUBCIRCUIT Project-1-1__OneBitCam FROM CELL Project-1-1:OneBitCam{sch}
+.SUBCKT Project-1-1__OneBitCam BL BLB CAM_Data Match RD WL
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@0 Match net@19 net@15 gnd nmos L=0.044U W=0.044U
+Mnmos@2 Match net@27 net@4 gnd nmos L=0.044U W=0.044U
+Mnmos@3 net@4 CAM_Data gnd gnd nmos L=0.044U W=0.044U
+Mnmos@4 net@15 net@4 gnd gnd nmos L=0.044U W=0.044U
+Mpmos@0 net@15 net@27 Match vdd pmos L=0.044U W=0.044U
+Mpmos@3 net@4 net@19 Match vdd pmos L=0.044U W=0.044U
+Mpmos@4 vdd CAM_Data net@4 vdd pmos L=0.044U W=0.044U
+Mpmos@5 vdd net@4 net@15 vdd pmos L=0.044U W=0.044U
+XSRAM@1 BL BLB net@19 net@27 RD vdd WL Project-1-1__SRAM
+.ENDS Project-1-1__OneBitCam
+
+*** SUBCIRCUIT Project-1-1__invertor FROM CELL Project-1-1:invertor{sch}
+.SUBCKT Project-1-1__invertor A A_
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@1 A_ A gnd gnd nmos L=0.044U W=0.044U
+Mpmos@1 vdd A A_ vdd pmos L=0.044U W=0.044U
+.ENDS Project-1-1__invertor
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: Project-1-1:OneRowCAM{sch}
+X_8_bit_NA@0 net@14 net@12 net@10 net@8 net@6 net@4 net@2 net@0 Match Project-1-1__8_bit_NAND
+XOneBitCa@0 IN_4 net@98 CAM_4 net@6 RD WL Project-1-1__OneBitCam
+XOneBitCa@1 IN_5 net@102 CAM_5 net@4 RD WL Project-1-1__OneBitCam
+XOneBitCa@2 IN_6 net@105 CAM_6 net@2 RD WL Project-1-1__OneBitCam
+XOneBitCa@3 IN_7 net@108 CAM_7 net@0 RD WL Project-1-1__OneBitCam
+XOneBitCa@4 IN_0 net@85 CAM_0 net@14 RD WL Project-1-1__OneBitCam
+XOneBitCa@5 IN_1 net@88 CAM_1 net@12 RD WL Project-1-1__OneBitCam
+XOneBitCa@6 IN_2 net@90 CAM_2 net@10 RD WL Project-1-1__OneBitCam
+XOneBitCa@7 IN_3 net@94 CAM_3 net@8 RD WL Project-1-1__OneBitCam
+Xinvertor@0 IN_0 net@85 Project-1-1__invertor
+Xinvertor@1 IN_1 net@88 Project-1-1__invertor
+Xinvertor@2 IN_2 net@90 Project-1-1__invertor
+Xinvertor@3 IN_3 net@94 Project-1-1__invertor
+Xinvertor@4 IN_4 net@98 Project-1-1__invertor
+Xinvertor@5 IN_5 net@102 Project-1-1__invertor
+Xinvertor@6 IN_6 net@105 Project-1-1__invertor
+Xinvertor@7 IN_7 net@108 Project-1-1__invertor
+
+* Spice Code nodes in cell cell 'Project-1-1:OneRowCAM{sch}'
+vdd vdd 0 0.95
+Vin0 IN_0 0 PWL(0 0)
+Vin1 IN_1 0 PWL(0 0.95)
+Vin2 IN_2 0 PWL(0 0)
+Vin3 IN_3 0 PWL(0 0)
+Vin4 IN_4 0 PWL(0 0.95)
+Vin5 IN_5 0 PWL(0 0)
+Vin6 IN_6 0 PWL(0 0.95)
+Vin7 IN_7 0 PWL(0 0)
+Vcam0 CAM_0 0 PWL(0 0)
+Vcam1 CAM_1 0 PWL(0 0.95)
+Vcam2 CAM_2 0 PWL(0 0)
+Vcam3 CAM_3 0 PWL(0 0)
+Vcam4 CAM_4 0 PWL(0 0.95)
+Vcam5 CAM_5 0 PWL(0 0)
+Vcam6 CAM_6 0 PWL(0 0.95)
+Vcam7 CAM_7 0 PWL(0 0)
+R_D RD 0 PWL(0 0)
+W_L WL 0 PWL(0 0.95 20ns 0.95 21ns 0)
+.tran 0 0.1us
+.include C:\Program Files\LTC\LTspiceXVII\model\model.txt
+.END

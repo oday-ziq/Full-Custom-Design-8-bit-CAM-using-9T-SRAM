@@ -1,0 +1,9 @@
+*** SPICE deck for cell SRAM{ic} from library Project
+*** Created on Sun Jul 02, 2023 10:12:16
+*** Last revised on Sun Jul 02, 2023 10:16:22
+*** Written on Sun Jul 02, 2023 11:00:14 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: Project:SRAM{ic}
+.END

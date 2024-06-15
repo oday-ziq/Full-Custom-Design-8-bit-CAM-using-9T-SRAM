@@ -1,0 +1,40 @@
+*** SPICE deck for cell 8_bit_NAND{sch} from library Project-1
+*** Created on Sun Jul 02, 2023 11:30:16
+*** Last revised on Sun Jul 02, 2023 11:48:29
+*** Written on Sun Jul 02, 2023 11:48:32 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: 8_bit_NAND{sch}
+Mnmos@0 Y I1 net@0 gnd nmos L=0.044U W=0.044U
+Mnmos@8 net@0 I2 net@1 gnd nmos L=0.044U W=0.044U
+Mnmos@9 net@1 I3 net@2 gnd nmos L=0.044U W=0.044U
+Mnmos@10 net@2 I4 net@3 gnd nmos L=0.044U W=0.044U
+Mnmos@11 net@3 I5 net@4 gnd nmos L=0.044U W=0.044U
+Mnmos@12 net@4 I6 net@5 gnd nmos L=0.044U W=0.044U
+Mnmos@13 net@5 I7 net@6 gnd nmos L=0.044U W=0.044U
+Mnmos@14 net@6 I8 gnd gnd nmos L=0.044U W=0.044U
+Mpmos@0 vdd I1 Y vdd pmos L=0.044U W=0.044U
+Mpmos@4 vdd I2 Y vdd pmos L=0.044U W=0.044U
+Mpmos@5 vdd I3 Y vdd pmos L=0.044U W=0.044U
+Mpmos@6 vdd I4 Y vdd pmos L=0.044U W=0.044U
+Mpmos@7 vdd I5 Y vdd pmos L=0.044U W=0.044U
+Mpmos@8 vdd I6 Y vdd pmos L=0.044U W=0.044U
+Mpmos@9 vdd I7 Y vdd pmos L=0.044U W=0.044U
+Mpmos@10 vdd I8 Y vdd pmos L=0.044U W=0.044U
+
+* Spice Code nodes in cell cell '8_bit_NAND{sch}'
+vdd vdd 0 DC 0.95
+VI1 I1 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI2 I2 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI3 I3 0 pulse 0 0 0 1n 1n 10n 50n
+VI4 I4 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI5 I5 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI6 I6 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI7 I7 0 pulse 0.95 0 0 1n 1n 10n 50n
+VI8 I8 0 pulse 0.95 0 0 1n 1n 10n 50n
+.tran 0 0.1us
+.include C:\Program Files\LTC\LTspiceXVII\model\model.txt
+.END
